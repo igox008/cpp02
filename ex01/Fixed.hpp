@@ -6,7 +6,7 @@
 /*   By: alaassir <alaassir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/29 15:34:33 by alaassir          #+#    #+#             */
-/*   Updated: 2024/04/30 01:32:51 by alaassir         ###   ########.fr       */
+/*   Updated: 2024/05/29 14:24:30 by alaassir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ class Fixed
 		Fixed(const float _float_);
 		~Fixed();
 		Fixed &operator=(Fixed const &_fixed);
-		int		getRawBits(void);
+		int		getRawBits(void) const;
 		void	setRawBits(int const raw);
 		float	toFloat(void) const;
 		int		toInt( void ) const;

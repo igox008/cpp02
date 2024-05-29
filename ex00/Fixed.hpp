@@ -6,7 +6,7 @@
 /*   By: alaassir <alaassir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/29 15:34:33 by alaassir          #+#    #+#             */
-/*   Updated: 2024/04/29 16:44:26 by alaassir         ###   ########.fr       */
+/*   Updated: 2024/05/29 14:10:02 by alaassir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ class Fixed
 		Fixed(Fixed &_fixed);
 		~Fixed();
 		Fixed &operator=(Fixed &_fixed);
-		int	getRawBits(void);
+		int	getRawBits(void) const;
 		void	setRawBits(int const raw);
 };
 

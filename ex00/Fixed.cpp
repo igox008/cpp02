@@ -6,7 +6,7 @@
 /*   By: alaassir <alaassir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/29 16:29:54 by alaassir          #+#    #+#             */
-/*   Updated: 2024/04/29 16:50:00 by alaassir         ###   ########.fr       */
+/*   Updated: 2024/05/29 14:10:11 by alaassir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ Fixed::Fixed(Fixed &_fixed)
 	*this = _fixed;
 }
 
-int	Fixed::getRawBits(void)
+int	Fixed::getRawBits(void) const
 {
 	std::cout << "getRawBits member function called\n";
 	return (this->fixed_point);
