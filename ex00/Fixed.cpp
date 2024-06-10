@@ -6,7 +6,7 @@
 /*   By: alaassir <alaassir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/29 16:29:54 by alaassir          #+#    #+#             */
-/*   Updated: 2024/05/29 14:10:11 by alaassir         ###   ########.fr       */
+/*   Updated: 2024/06/10 19:29:01 by alaassir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ Fixed::~Fixed()
 
 Fixed	&Fixed::operator=(Fixed &_fixed)
 {
-	std::cout << "Copy assignment operator called" << std::endl;
+	std::cout << "Copy assignment operator called" << std::endl; // if (this != &fixed)
 	this->fixed_point = _fixed.fixed_point;
 	return (*this);
 }

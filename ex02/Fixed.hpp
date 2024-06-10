@@ -6,7 +6,7 @@
 /*   By: alaassir <alaassir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/29 15:34:33 by alaassir          #+#    #+#             */
-/*   Updated: 2024/05/29 14:26:50 by alaassir         ###   ########.fr       */
+/*   Updated: 2024/06/10 19:44:57 by alaassir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,10 +41,10 @@ class Fixed
 		bool	operator==(Fixed _fixed_) const;
 		bool	operator!=(Fixed _fixed_) const;
 
-		float	operator+(Fixed _fixed_) const;
-		float	operator-(Fixed _fixed_) const;
-		float	operator*(Fixed _fixed_) const;
-		float	operator/(Fixed _fixed_) const;
+		Fixed	operator+(Fixed _fixed_) const;
+		Fixed	operator-(Fixed _fixed_) const;
+		Fixed	operator*(Fixed _fixed_) const;
+		Fixed	operator/(Fixed _fixed_) const;
 
 		Fixed	operator++();
 		Fixed	operator--();

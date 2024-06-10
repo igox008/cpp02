@@ -6,7 +6,7 @@
 /*   By: alaassir <alaassir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/29 16:29:54 by alaassir          #+#    #+#             */
-/*   Updated: 2024/05/29 14:26:12 by alaassir         ###   ########.fr       */
+/*   Updated: 2024/06/10 23:39:47 by alaassir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ Fixed	&Fixed::operator=(Fixed const &_fixed)
 
 Fixed::Fixed(Fixed const &_fixed)
 {
-	*this = _fixed;
+	this->setRawBits(_fixed.getRawBits());
 }
 
 int	Fixed::getRawBits(void) const
@@ -82,13 +82,33 @@ bool	Fixed::operator==(Fixed _fixed_) const {return (this->toFloat() == _fixed_.
 
 bool	Fixed::operator!=(Fixed _fixed_) const {return (this->toFloat() != _fixed_.toFloat());}
 
-float	Fixed::operator+(Fixed _fixed_) const {return (this->toFloat() + _fixed_.toFloat());}
+Fixed	Fixed::operator+(Fixed _fixed_) const
+{
+	Fixed ret;
+	ret.setRawBits((this->getRawBits() + _fixed_.getRawBits()) / 256);
+	return (ret);
+}
 
-float	Fixed::operator-(Fixed _fixed_) const {return (this->toFloat() - _fixed_.toFloat());}
+Fixed	Fixed::operator-(Fixed _fixed_) const
+{
+	Fixed ret;
+	ret.setRawBits((this->getRawBits() - _fixed_.getRawBits()) / 256);
+	return (ret);
+}
 
-float	Fixed::operator*(Fixed _fixed_) const {return (this->toFloat() * _fixed_.toFloat());}
+Fixed	Fixed::operator*(Fixed _fixed_) const
+{
+	Fixed ret;
+	ret.setRawBits((this->getRawBits() * _fixed_.getRawBits()) / 256);
+	return (ret);
+}
 
-float	Fixed::operator/(Fixed _fixed_) const {return (this->toFloat() / _fixed_.toFloat());}
+Fixed	Fixed::operator/(Fixed _fixed_) const
+{
+	Fixed ret;
+	ret.setRawBits((this->getRawBits() / _fixed_.getRawBits()) / 256);
+	return (ret);
+}
 
 Fixed	Fixed::operator++() {return (this->fixed_point++, *this);}
 
@@ -108,10 +128,10 @@ Fixed	Fixed::operator--(int)
 	return (tmp);
 }
 
-Fixed	&Fixed::min(Fixed &f1, Fixed &f2) {return (f1.toFloat() < f2.toFloat() ? f1 : f2);}
+Fixed	&Fixed::min(Fixed &f1, Fixed &f2) {return (f1.getRawBits() < f2.getRawBits() ? f1 : f2);}
 
-Fixed	&Fixed::max(Fixed &f1, Fixed &f2) {return (f1.toFloat() > f2.toFloat() ? f1 : f2);}
+Fixed	&Fixed::max(Fixed &f1, Fixed &f2) {return (f1.getRawBits() > f2.getRawBits() ? f1 : f2);}
 
-const Fixed	&Fixed::min(Fixed const &f1, Fixed const &f2) {return (f1.toFloat() > f2.toFloat() ? f1 : f2);}
+const Fixed	&Fixed::min(Fixed const &f1, Fixed const &f2) {return (f1.getRawBits() > f2.getRawBits() ? f1 : f2);}
 
-const Fixed	&Fixed::max(Fixed const &f1, const Fixed &f2) {return (f1.toFloat() > f2.toFloat() ? f1 : f2);}
+const Fixed	&Fixed::max(Fixed const &f1, const Fixed &f2) {return (f1.getRawBits() > f2.getRawBits() ? f1 : f2);}
