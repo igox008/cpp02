@@ -6,7 +6,7 @@
 /*   By: alaassir <alaassir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/29 16:29:54 by alaassir          #+#    #+#             */
-/*   Updated: 2024/04/30 17:01:13 by alaassir         ###   ########.fr       */
+/*   Updated: 2024/06/12 03:18:02 by alaassir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ Fixed::Fixed(Fixed const &_fixed)
 	*this = _fixed;
 }
 
-int	Fixed::getRawBits(void)
+int	Fixed::getRawBits(void) const
 {
 	return (this->fixed_point);
 }
@@ -61,7 +61,7 @@ Fixed::Fixed(const int _int_)
 
 int	Fixed::toInt(void) const
 {
-	return (this->fixed_point >> this->frac_bits);
+	return ((unsigned int)this->fixed_point >> this->frac_bits);
 }
 
 std::ostream	&operator<<(std::ostream &out, Fixed const &_fixed_)
@@ -82,13 +82,33 @@ bool	Fixed::operator==(Fixed _fixed_) const {return (this->toFloat() == _fixed_.
 
 bool	Fixed::operator!=(Fixed _fixed_) const {return (this->toFloat() != _fixed_.toFloat());}
 
-float	Fixed::operator+(Fixed _fixed_) const {return (this->toFloat() + _fixed_.toFloat());}
+Fixed	Fixed::operator+(Fixed _fixed_) const
+{
+	Fixed ret;
+	ret.setRawBits((this->getRawBits() + _fixed_.getRawBits()));
+	return (ret);
+}
 
-float	Fixed::operator-(Fixed _fixed_) const {return (this->toFloat() - _fixed_.toFloat());}
+Fixed	Fixed::operator-(Fixed _fixed_) const
+{
+	Fixed ret;
+	ret.setRawBits((this->getRawBits() - _fixed_.getRawBits()));
+	return (ret);
+}
 
-float	Fixed::operator*(Fixed _fixed_) const {return (this->toFloat() * _fixed_.toFloat());}
+Fixed	Fixed::operator*(Fixed _fixed_) const
+{
+	Fixed ret;
+	ret.setRawBits((this->getRawBits() * _fixed_.getRawBits()) / 256);
+	return (ret);
+}
 
-float	Fixed::operator/(Fixed _fixed_) const {return (this->toFloat() / _fixed_.toFloat());}
+Fixed	Fixed::operator/(Fixed _fixed_) const
+{
+	Fixed ret;
+	ret.setRawBits((this->getRawBits() / _fixed_.getRawBits()) * 256);
+	return (ret);
+}
 
 Fixed	Fixed::operator++() {return (this->fixed_point++, *this);}
 

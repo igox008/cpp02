@@ -6,7 +6,7 @@
 /*   By: alaassir <alaassir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/29 16:29:54 by alaassir          #+#    #+#             */
-/*   Updated: 2024/06/06 09:53:21 by alaassir         ###   ########.fr       */
+/*   Updated: 2024/06/12 02:07:13 by alaassir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,7 +69,7 @@ Fixed::Fixed(const int _int_)
 
 int	Fixed::toInt(void) const
 {
-	return (this->fixed_point >> this->frac_bits);
+	return ((unsigned int)this->fixed_point >> this->frac_bits);
 }
 
 std::ostream	&operator<<(std::ostream &out, Fixed const &_fixed_)
